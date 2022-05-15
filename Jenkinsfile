@@ -3,8 +3,8 @@ node {
     checkout scm
     def customImage = docker.build("mak2497/my-image:${env.BUILD_ID}")
     docker.withRegistry('', 'DCR-personal') {  
-        // customImage.push()
-        sh "docker push my-image:${env.BUILD_ID}"
+        customImage.push()
+        // sh "docker push my-image:${env.BUILD_ID}"
 
     }
     customImage.inside {
